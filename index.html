@@ -14,6 +14,7 @@
 
     <nav aria-label="Головна навігація">
         <ul>
+            <li><a href="#home">Головна</a></li>
             <li><a href="#about">Про платформу</a></li>
             <li><a href="#how-it-works">Як це працює</a></li>
             <li><a href="#destinations">Напрямки та місця</a></li>
@@ -24,6 +25,14 @@
     </nav>
 
     <main>
+        <section id="home">
+            <h2>Головна</h2>
+            <p>Плануйте подорожі відповідно до власних інтересів, знаходьте цікаві місця та місцевих провідників.</p>
+            <img src="https://placehold.co/800x400?text=TravelGuide"
+                 alt="Туристичний краєвид для головної сторінки TravelGuide"
+                 width="800" height="400">
+        </section>
+
         <section id="about">
             <h2>Про платформу</h2>
             <p>TravelGuide допомагає мандрівникам планувати подорожі відповідно до особистих інтересів та знаходити місцевих провідників, які добре знають історію, культуру й особливості місцевості.</p>
@@ -53,14 +62,23 @@
             <h2>Популярні напрямки та місця</h2>
             <article>
                 <h3>Історичні місця</h3>
+                <img src="https://placehold.co/600x350?text=History"
+                     alt="Історична пам'ятка для туристичної подорожі"
+                     width="600" height="350">
                 <p>Замки, старовинні міста, музеї та інші місця для тих, хто цікавиться історією.</p>
             </article>
             <article>
                 <h3>Природа</h3>
+                <img src="https://placehold.co/600x350?text=Nature"
+                     alt="Природний краєвид для туристичної подорожі"
+                     width="600" height="350">
                 <p>Національні парки, гори, озера та мальовничі природні локації.</p>
             </article>
             <article>
                 <h3>Культура та архітектура</h3>
+                <img src="https://placehold.co/600x350?text=Culture"
+                     alt="Архітектурна пам'ятка та культурне місце"
+                     width="600" height="350">
                 <p>Пам'ятки архітектури, культурні центри та місця з унікальними традиціями.</p>
             </article>
         </section>
@@ -89,13 +107,45 @@
 
         <section id="contacts">
             <h2>Контакти</h2>
-            <p>Email: travelguide@example.com</p>
-            <p>Соціальні мережі: TravelGuide</p>
+            <p>Маєте питання або пропозицію? Напишіть нам.</p>
+
+            <form action="#" method="post">
+                <div>
+                    <label for="name">Ім'я:</label>
+                    <input type="text" id="name" name="name"
+                           placeholder="Введіть ваше ім'я" required>
+                </div>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="example@email.com" required>
+                </div>
+
+                <div>
+                    <label for="topic">Тема звернення:</label>
+                    <select id="topic" name="topic">
+                        <option value="recommendation">Рекомендації для подорожі</option>
+                        <option value="guide">Пошук провідника</option>
+                        <option value="feedback">Відгук</option>
+                        <option value="other">Інше</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="message">Повідомлення:</label>
+                    <textarea id="message" name="message" rows="6"
+                              placeholder="Напишіть ваше повідомлення" required></textarea>
+                </div>
+
+                <button type="submit">Надіслати повідомлення</button>
+            </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 TravelGuide. </p>
+        <p>&copy; 2026 TravelGuide.</p>
+        <p>Email: travelguide@example.com</p>
     </footer>
 </body>
 </html>
