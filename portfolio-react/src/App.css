@@ -1,3 +1,41 @@
+.app-shell {
+  min-height: 100vh;
+  color: #26352f;
+  background: #f7f8f5;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.app-shell.dark-theme {
+  color: #e9f0ed;
+  background: #17211d;
+}
+
+.dark-theme .site-main {
+  color: #e9f0ed;
+}
+
+.dark-theme .section-heading h2,
+.dark-theme .project-card h3 {
+  color: #e9f0ed;
+}
+
+.dark-theme .section-heading > p:last-child,
+.dark-theme .project-card p {
+  color: #c5d0ca;
+}
+
+.dark-theme .project-card,
+.dark-theme .name-field input {
+  border-color: #53645c;
+  color: #e9f0ed;
+  background: #202c27;
+}
+
+.dark-theme .category-filters button,
+.dark-theme .name-field input::placeholder {
+  color: #e9f0ed;
+}
+
 .site-header {
   padding: 4.5rem max(calc((100vw - 72rem) / 2), 1.25rem);
   color: #f7f8f5;
@@ -58,6 +96,56 @@
   color: #53645c;
 }
 
+.theme-toggle,
+.filter-button,
+.like-button {
+  padding: 0.65rem 1rem;
+  border: 1px solid #176b55;
+  border-radius: 0.55rem;
+  color: #176b55;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  margin-top: 1rem;
+}
+
+.name-field {
+  display: grid;
+  gap: 0.4rem;
+  width: min(100%, 24rem);
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+.name-field input {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #c5d0ca;
+  border-radius: 0.5rem;
+  color: #26352f;
+  background: #fff;
+  font: inherit;
+}
+
+.greeting {
+  min-height: 1.5em;
+}
+
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.filter-button[aria-pressed='true'] {
+  color: #fff;
+  background: #176b55;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
@@ -86,6 +174,14 @@
   padding: 1.25rem;
 }
 
+.project-category {
+  margin: 0 0 0.35rem;
+  color: #176b55;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .project-card h3 {
   margin: 0 0 0.6rem;
   color: #176b55;
@@ -95,6 +191,42 @@
 .project-card p {
   margin: 0;
   color: #53645c;
+}
+
+.like-button {
+  margin-top: 1rem;
+}
+
+.theme-toggle:hover,
+.filter-button:hover,
+.like-button:hover {
+  background: #e5eee9;
+}
+
+.filter-button[aria-pressed='true']:hover {
+  background: #1a614e;
+}
+
+.dark-theme .theme-toggle,
+.dark-theme .filter-button,
+.dark-theme .like-button {
+  border-color: #6ed9b3;
+  color: #84ddbd;
+}
+
+.dark-theme .filter-button[aria-pressed='true'] {
+  color: #17211d;
+  background: #6ed9b3;
+}
+
+.dark-theme .theme-toggle:hover,
+.dark-theme .filter-button:hover,
+.dark-theme .like-button:hover {
+  background: #263a32;
+}
+
+.dark-theme .filter-button[aria-pressed='true']:hover {
+  background: #84ddbd;
 }
 
 .site-footer {
