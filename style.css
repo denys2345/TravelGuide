@@ -1,7 +1,21 @@
 :root {
     --primary-color: #176b55;
+    --primary-hover-color: #1a614e;
     --text-color: #26352f;
     --bg-color: #f7f8f5;
+    --surface-color: #eef2ee;
+    --border-color: #c5d0ca;
+    color-scheme: light;
+}
+
+html[data-theme="dark"] {
+    --primary-color: #6ed9b3;
+    --primary-hover-color: #84ddbd;
+    --text-color: #e9f0ed;
+    --bg-color: #17211d;
+    --surface-color: #202c27;
+    --border-color: #53645c;
+    color-scheme: dark;
 }
 
 * {
@@ -23,7 +37,7 @@ body {
 header {
     padding: 3.5rem 1.5rem 2.5rem;
     text-align: center;
-    background-color: color-mix(in srgb, var(--primary-color) 9%, var(--bg-color));
+    background-color: var(--surface-color);
 }
 
 header h1 {
@@ -94,7 +108,7 @@ aside {
     margin: 0.75rem 0;
     padding: 1.25rem;
     border-radius: 1rem;
-    background-color: color-mix(in srgb, var(--primary-color) 4%, var(--bg-color));
+    background-color: var(--surface-color);
 }
 
 h1,
@@ -140,7 +154,7 @@ main > section:first-child img {
 article {
     margin: 0;
     padding: 1rem;
-    border: 1px solid color-mix(in srgb, var(--primary-color) 18%, var(--bg-color));
+    border: 1px solid var(--border-color);
     border-radius: 0.75rem;
     background-color: var(--bg-color);
 }
@@ -211,7 +225,7 @@ select,
 textarea {
     width: 100%;
     padding: 0.75rem 0.9rem;
-    border: 1px solid color-mix(in srgb, var(--text-color) 25%, var(--bg-color));
+    border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     color: var(--text-color);
     background-color: var(--bg-color);
@@ -236,14 +250,14 @@ button {
 }
 
 button:hover {
-    background-color: color-mix(in srgb, var(--primary-color) 82%, var(--text-color));
+    background-color: var(--primary-hover-color);
     transform: translateY(-1px);
 }
 
 footer {
     padding: 2rem 1.5rem;
     text-align: center;
-    background-color: color-mix(in srgb, var(--primary-color) 9%, var(--bg-color));
+    background-color: var(--surface-color);
 }
 
 footer p {
