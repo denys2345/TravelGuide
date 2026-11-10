@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@source "./index.html";
+
+@theme inline {
+    --color-brand: var(--primary-color);
+    --color-brand-hover: var(--primary-hover-color);
+    --color-on-brand: var(--bg-color);
+}
