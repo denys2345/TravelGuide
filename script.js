@@ -84,7 +84,7 @@ contactForm.addEventListener("submit", async (event) => {
     };
     const invalidField = !values.name
         ? name
-        : !values.email || !values.email.includes("@")
+        : !email.validity.valid
             ? email
             : !values.message
                 ? message
@@ -94,7 +94,7 @@ contactForm.addEventListener("submit", async (event) => {
         invalidField.setAttribute("aria-invalid", "true");
         invalidField.focus();
         formMessage.textContent = invalidField === email
-            ? "Введіть email, що містить символ @."
+            ? "Введіть коректну адресу email."
             : "Заповніть усі обов’язкові поля.";
         formMessage.classList.add("is-error");
         return;
