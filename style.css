@@ -5,16 +5,20 @@
     --bg-color: #f7f8f5;
     --surface-color: #eef2ee;
     --border-color: #c5d0ca;
+    --error-color: #b42318;
+    --success-color: #176b55;
     color-scheme: light;
 }
 
-html[data-theme="dark"] {
+html.dark-theme {
     --primary-color: #6ed9b3;
     --primary-hover-color: #84ddbd;
     --text-color: #e9f0ed;
     --bg-color: #17211d;
     --surface-color: #202c27;
     --border-color: #53645c;
+    --error-color: #ff9188;
+    --success-color: #84ddbd;
     color-scheme: dark;
 }
 
@@ -239,6 +243,20 @@ textarea {
 
 textarea {
     resize: vertical;
+}
+
+.form-message {
+    min-height: 1.65em;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.form-message.is-error {
+    color: var(--error-color);
+}
+
+.form-message.is-success {
+    color: var(--success-color);
 }
 
 button {
