@@ -41,9 +41,12 @@ header p {
 }
 
 nav {
+    display: flex;
     position: sticky;
     top: 0;
     z-index: 1;
+    justify-content: center;
+    align-items: center;
     background-color: var(--bg-color);
     box-shadow: 0 0.2rem 0.8rem color-mix(in srgb, var(--text-color) 10%, transparent);
 }
@@ -51,8 +54,10 @@ nav {
 nav ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     gap: 0.35rem 1.5rem;
+    width: 100%;
     max-width: 75rem;
     margin: 0 auto;
     padding: 0.9rem 1.5rem;
@@ -147,9 +152,26 @@ article h3 {
 article img {
     display: block;
     width: min(100%, 42rem);
-    height: auto;
+    height: 13rem;
     margin: 1rem 0;
     border-radius: 0.6rem;
+    object-fit: cover;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 1.25rem;
+}
+
+.card-grid article {
+    display: flex;
+    flex: 1 1 15rem;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+    margin: 0;
 }
 
 aside {
