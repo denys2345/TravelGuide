@@ -10,6 +10,14 @@ const submitButton = contactForm.querySelector('button[type="submit"]');
 const newsList = document.querySelector("#news-list");
 const newsMessage = document.querySelector("#news-message");
 
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch((error) => {
+            console.error("Не вдалося зареєструвати service worker:", error);
+        });
+    });
+}
+
 console.log("Destination names:", destinationNames);
 console.log("Destination card count:", destinationCards.length);
 console.log("Page title:", pageTitle.textContent);
