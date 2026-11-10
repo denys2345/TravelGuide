@@ -5,6 +5,45 @@
   transition: color 160ms ease, background-color 160ms ease;
 }
 
+.name-field textarea {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #c5d0ca;
+  border-radius: 0.5rem;
+  color: #26352f;
+  background: #fff;
+  font: inherit;
+  resize: vertical;
+}
+
+.contact-section {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border: 1px solid #dce5df;
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 55%);
+}
+
+.contact-section h2 {
+  margin: 0 0 1rem;
+  color: #176b55;
+}
+
+.contact-form {
+  display: grid;
+  gap: 0.85rem;
+  max-width: 32rem;
+}
+
+.contact-form .greeting {
+  margin: 0;
+}
+
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
 .app-shell.dark-theme {
   color: #e9f0ed;
   background: #17211d;
@@ -25,14 +64,18 @@
 }
 
 .dark-theme .project-card,
-.dark-theme .name-field input {
+.dark-theme .name-field input,
+.dark-theme .name-field textarea,
+.dark-theme .contact-section {
   border-color: #53645c;
   color: #e9f0ed;
   background: #202c27;
 }
 
 .dark-theme .category-filters button,
-.dark-theme .name-field input::placeholder {
+.dark-theme .name-field input::placeholder,
+.dark-theme .name-field textarea::placeholder,
+.dark-theme .api-message {
   color: #e9f0ed;
 }
 
@@ -93,6 +136,11 @@
 
 .section-heading > p:last-child {
   margin: 0.75rem 0 0;
+  color: #53645c;
+}
+
+.api-message {
+  margin-bottom: 1rem;
   color: #53645c;
 }
 

@@ -1,40 +1,81 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Card from './components/Card.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
-import cultureImage from '../../images/Culture.jpg'
-import historyImage from '../../images/History.jpg'
-import natureImage from '../../images/Nature.jpg'
+const API_URL = 'http://localhost:3000'
 
-const projects = [
-  {
-    id: 'history',
-    title: 'Історичні місця',
-    text: 'Замки, старовинні міста й музеї для мандрівників, які цікавляться історією.',
-    image: historyImage,
-    category: 'web',
-  },
-  {
-    id: 'nature',
-    title: 'Природні маршрути',
-    text: 'Гори, водоспади та озера для подорожей серед мальовничих краєвидів.',
-    image: natureImage,
-    category: 'design',
-  },
-  {
-    id: 'culture',
-    title: 'Культура й архітектура',
-    text: 'Пам’ятки архітектури та культурні центри з унікальними традиціями.',
-    image: cultureImage,
-    category: 'design',
-  },
-]
+async function fetchJson(url, options) {
+  const response = await fetch(url, options)
+  if (!response.ok) {
+    throw new Error(`Request failed with status ${response.status}`)
+  }
+  return response.json()
+}
 
 function App() {
   const [theme, setTheme] = useState('light')
   const [category, setCategory] = useState('all')
   const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [projects, setProjects] = useState([])
+  const [apiMessage, setApiMessage] = useState('Завантаження напрямків…')
+  const [contactStatus, setContactStatus] = useState('')
+  const [isSending, setIsSending] = useState(false)
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    async function loadProjects() {
+      try {
+        const data = await fetchJson(`${API_URL}/api/projects`, { signal: controller.signal })
+        if (!Array.isArray(data)) {
+          throw new Error('The projects response is not a list.')
+        }
+
+        setProjects(data)
+        setApiMessage(`Напрямків із сервера: ${data.length}.`)
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          return
+        }
+
+        console.error('Не вдалося завантажити напрямки:', error)
+        setApiMessage('Не вдалося завантажити напрямки. Перевірте, чи запущено сервер.')
+      }
+    }
+
+    loadProjects()
+    return () => controller.abort()
+  }, [])
+
+  async function handleContactSubmit(event) {
+    event.preventDefault()
+    setIsSending(true)
+    setContactStatus('Надсилання…')
+
+    try {
+      const result = await fetchJson(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      })
+
+      if (!result.ok) {
+        throw new Error('The server did not accept the contact form.')
+      }
+
+      setContactStatus('Звернення надіслано.')
+      setMessage('')
+    } catch (error) {
+      console.error('Не вдалося надіслати звернення:', error)
+      setContactStatus('Не вдалося надіслати звернення. Спробуйте пізніше.')
+    } finally {
+      setIsSending(false)
+    }
+  }
+
   const visibleProjects = projects.filter(
     (project) => category === 'all' || project.category === category,
   )
@@ -56,19 +97,8 @@ function App() {
             >
               {theme === 'light' ? 'Темна тема' : 'Світла тема'}
             </button>
-            <label className="name-field">
-              Ваше ім’я
-              <input
-                type="text"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                placeholder="Введіть ім’я"
-              />
-            </label>
-            <p className="greeting" aria-live="polite">
-              {name ? `Вітаємо, ${name}!` : 'Введіть ім’я, щоб побачити привітання.'}
-            </p>
           </div>
+          <p className="api-message" role="status" aria-live="polite">{apiMessage}</p>
           <div className="category-filters" aria-label="Фільтр напрямків">
             {[
               ['all', 'Усі'],
@@ -91,6 +121,47 @@ function App() {
               <Card key={project.id} {...project} />
             ))}
           </div>
+        </section>
+        <section className="contact-section" aria-labelledby="contact-title">
+          <h2 id="contact-title">Напишіть нам</h2>
+          <form className="contact-form" onSubmit={handleContactSubmit}>
+            <label className="name-field">
+              Ваше ім’я
+              <input
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder="Введіть ім’я"
+                required
+              />
+            </label>
+            <p className="greeting" aria-live="polite">
+              {name ? `Вітаємо, ${name}!` : 'Введіть ім’я, щоб побачити привітання.'}
+            </p>
+            <label className="name-field">
+              Email
+              <input
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="name@example.com"
+                required
+              />
+            </label>
+            <label className="name-field">
+              Повідомлення
+              <textarea
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+                rows="4"
+                required
+              />
+            </label>
+            <button className="filter-button" type="submit" disabled={isSending}>
+              {isSending ? 'Надсилання…' : 'Надіслати'}
+            </button>
+            <p className="greeting" role="status" aria-live="polite">{contactStatus}</p>
+          </form>
         </section>
       </main>
       <Footer />
