@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "tailwindcss": "^4.3.5"
+  },
+  "scripts": {
+    "build": "tailwindcss -i ./tailwind.input.css -o ./tailwind.css --minify",
+    "watch": "tailwindcss -i ./tailwind.input.css -o ./tailwind.css --watch"
+  },
+  "name": "travelguide",
+  "private": true
+}

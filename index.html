@@ -8,6 +8,7 @@
           content="TravelGuide — платформа для персоналізованих туристичних рекомендацій та пошуку місцевих провідників.">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tailwind.css">
 
     <title>TravelGuide — подорожі за вашими вподобаннями</title>
 </head>
@@ -23,7 +24,7 @@
             провідників відповідно до своїх вподобань.
         </p>
 
-        <button id="theme-toggle" type="button" aria-pressed="false">
+        <button class="justify-self-start rounded-lg border-0 bg-brand px-6 py-3 font-[inherit] font-bold text-on-brand transition-[background-color,transform] hover:-translate-y-px hover:bg-brand-hover" id="theme-toggle" type="button" aria-pressed="false">
             Увімкнути темну тему
         </button>
     </header>
@@ -168,9 +169,9 @@
 
 
             <!-- Історія -->
-            <div class="destination-grid">
+            <div class="destination-grid grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
 
-            <article>
+            <article class="shadow-md transition-shadow hover:shadow-lg">
 
                 <h3>Історичні місця</h3>
 
@@ -192,7 +193,7 @@
 
 
             <!-- Природа -->
-            <article>
+            <article class="shadow-md transition-shadow hover:shadow-lg">
 
                 <h3>Природа</h3>
 
@@ -214,7 +215,7 @@
 
 
             <!-- Культура -->
-            <article>
+            <article class="shadow-md transition-shadow hover:shadow-lg">
 
                 <h3>Культура та архітектура</h3>
 
@@ -414,7 +415,7 @@
 
 
                 <!-- Кнопка -->
-                <button type="submit">
+                <button class="justify-self-start rounded-lg border-0 bg-brand px-6 py-3 font-[inherit] font-bold text-on-brand transition-[background-color,transform] hover:-translate-y-px hover:bg-brand-hover" type="submit">
                     Надіслати повідомлення
                 </button>
 

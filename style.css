@@ -218,12 +218,6 @@ article img {
     margin: 0;
 }
 
-.destination-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.25rem;
-}
-
 .destination-grid article {
     display: flex;
     flex-direction: column;
@@ -281,21 +275,8 @@ textarea {
 }
 
 button {
-    justify-self: start;
-    padding: 0.85rem 1.4rem;
-    border: none;
-    border-radius: 0.5rem;
-    color: var(--bg-color);
-    background-color: var(--primary-color);
-    font: inherit;
-    font-weight: 700;
     cursor: pointer;
     transition: background-color 160ms ease, transform 160ms ease;
-}
-
-button:hover {
-    background-color: var(--primary-hover-color);
-    transform: translateY(-1px);
 }
 
 footer {
@@ -333,10 +314,6 @@ footer p {
 
     article {
         padding: 1.5rem;
-    }
-
-    .destination-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .destination-grid article {
